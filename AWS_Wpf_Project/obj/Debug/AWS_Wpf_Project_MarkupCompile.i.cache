@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\For Alexandr\AWS_Wpf_Project\AWS_Wpf_Project\obj\Debug\
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\
 AWS_Wpf_Project
 none
 false
 DEBUG;TRACE
-D:\For Alexandr\AWS_Wpf_Project\AWS_Wpf_Project\App.xaml
-11151548125
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\App.xaml
+451228839
 
-6673853281
+9549201374
 13-1142990016
-MainWindow.xaml;
+Style\Menu.xaml;Themes\DefaultTheme.xaml;View\Handbook.xaml;View\MainWindow.xaml;
 
-True
+False
 
