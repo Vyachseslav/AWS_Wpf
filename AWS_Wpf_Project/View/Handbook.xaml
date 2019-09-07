@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AWS_Wpf_Project.View"
+        xmlns:localVM="clr-namespace:AWS_Wpf_Project.ViewModel"
         mc:Ignorable="d"
         Title="Справочники" Height="450" Width="800">
+    <Window.DataContext>
+        <localVM:HandbookViewModel x:Name="hbVM" />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -46,10 +50,56 @@
         </Menu>
 
         <TabControl Grid.Row="2" BorderThickness="1" BorderBrush="Gray">
-            <TabItem Header="Комплектующие"></TabItem>
-            <TabItem Header="Портфели"></TabItem>
-            <TabItem Header="Группы комплектующих"></TabItem>
-            <TabItem Header="Оборудование"></TabItem>
+            <TabItem Header="Комплектующие">
+                <DataGrid x:Name="gridFittings" 
+                          ItemsSource="{Binding FittingTable, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedFitting, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="1*" />                        
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="0.3*" />
+                        <DataGridTextColumn Header="Группа" Binding="{Binding Path=ComponentGroup}" Width="1*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Портфели">
+                <DataGrid x:Name="gridBriefcase" 
+                          ItemsSource="{Binding BriefcaseTable, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedBriefcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="1*" />
+                        <DataGridTextColumn Header="Описание" Binding="{Binding Path=Description}" Width="1*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Группы комплектующих">
+                <DataGrid x:Name="gridComponentGroup" 
+                          ItemsSource="{Binding ComponentGroupTable, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedComponentGroup, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <!--<DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="0.1*" />-->
+                        <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="1*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Оборудование">
+                <DataGrid x:Name="gridEquipment" 
+                          ItemsSource="{Binding EquipmentTable, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedEquipment, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="1*" />
+                        <DataGridTextColumn Header="Описание" Binding="{Binding Path=Description}" Width="1*" />
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="1*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
         </TabControl>
         
     </Grid>

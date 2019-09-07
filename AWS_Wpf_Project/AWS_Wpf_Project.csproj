@@ -77,6 +77,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Connection\MainConnection.cs" />
+    <Compile Include="Model\BriefcaseModel.cs" />
+    <Compile Include="Model\ComponentGroupModel.cs" />
+    <Compile Include="Model\EquipmentModel.cs" />
+    <Compile Include="Model\FittingModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModel\HandbookViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\Handbook.xaml.cs">
@@ -113,9 +120,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\MainIcon.ico" />
   </ItemGroup>
