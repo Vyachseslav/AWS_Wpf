@@ -65,7 +65,7 @@ namespace AWS_Wpf_Project.ViewModel
             set
             {
                 _componentGroupTable = value;
-                OnPropertyChanged("ComponentGtoupTable");
+                OnPropertyChanged("ComponentGroupTable");
             }
         }
 
@@ -75,7 +75,7 @@ namespace AWS_Wpf_Project.ViewModel
             set
             {
                 _selectedcomponentGroup = value;
-                OnPropertyChanged("SelectedComponentGroup");
+                OnPropertyChanged();
             }
         }
 

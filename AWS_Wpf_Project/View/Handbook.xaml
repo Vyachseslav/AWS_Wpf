@@ -77,13 +77,13 @@
             </TabItem>
             <TabItem Header="Группы комплектующих">
                 <DataGrid x:Name="gridComponentGroup" 
-                          ItemsSource="{Binding ComponentGroupTable, UpdateSourceTrigger=PropertyChanged}"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Path=ComponentGroupTable, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding SelectedComponentGroup, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                          IsReadOnly="True"
-                          AutoGenerateColumns="False">
+                          IsReadOnly="True" >
                     <DataGrid.Columns>
                         <!--<DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="0.1*" />-->
-                        <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="1*" />
+                        <DataGridTextColumn Header="Название" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="1*" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

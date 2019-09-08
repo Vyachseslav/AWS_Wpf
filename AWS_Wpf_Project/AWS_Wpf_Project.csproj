@@ -57,6 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Style\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -78,10 +82,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Connection\MainConnection.cs" />
+    <Compile Include="Interface\IMessagable.cs" />
     <Compile Include="Model\BriefcaseModel.cs" />
     <Compile Include="Model\ComponentGroupModel.cs" />
     <Compile Include="Model\EquipmentModel.cs" />
     <Compile Include="Model\FittingModel.cs" />
+    <Compile Include="Services\StandartMessageService.cs" />
+    <Compile Include="Sql\MainSqlMethod.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModel\HandbookViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

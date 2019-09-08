@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:AWS_Wpf_Project.Themes">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/DataGrid.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

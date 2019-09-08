@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AWS_Wpf_Project.Sql;
 
 namespace AWS_Wpf_Project.Model
 {
@@ -35,23 +36,7 @@ namespace AWS_Wpf_Project.Model
 
         public static DataTable Load()
         {
-            using (SqlConnection conn = new SqlConnection(Connection.MainConnection.MainConn))
-            {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
-                {
-                    string commandText = "exec ShowComponentGroups";
-                    cmd.CommandText = commandText;
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    da = new SqlDataAdapter(cmd);
-                    ds = new DataSet();
-                    da.Fill(ds);
-
-                    return ds.Tables[0];
-                }
-            }
+            return new MainSqlMethod().LoadData("exec ShowComponentGroups");
         }
 
         public static async Task<DataTable> LoadAsync()

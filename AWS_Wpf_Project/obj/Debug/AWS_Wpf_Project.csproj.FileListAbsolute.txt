@@ -18,3 +18,5 @@ D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\AWS_Wpf_Project.csproj.Generat
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\AWS_Wpf_Project.csproj.CoreCompileInputs.cache
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\AWS_Wpf_Project.exe
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\AWS_Wpf_Project.pdb
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\AWS_Wpf_Project.csprojAssemblyReference.cache
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\Style\DataGrid.baml

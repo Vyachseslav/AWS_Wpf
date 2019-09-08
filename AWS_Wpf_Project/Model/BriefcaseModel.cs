@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AWS_Wpf_Project.Sql;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -52,23 +53,7 @@ namespace AWS_Wpf_Project.Model
 
         public static DataTable Load()
         {
-            using (SqlConnection conn = new SqlConnection(Connection.MainConnection.MainConn))
-            {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
-                {
-                    string commandText = "exec ShowBriefcases";
-                    cmd.CommandText = commandText;
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    da = new SqlDataAdapter(cmd);
-                    ds = new DataSet();
-                    da.Fill(ds);
-
-                    return ds.Tables[0];
-                }
-            }
+            return new MainSqlMethod().LoadData("exec ShowBriefcases");
         }
 
         public static async Task<DataTable> LoadAsync()
