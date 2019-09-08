@@ -112,7 +112,6 @@ namespace AWS_Wpf_Project.ViewModel
             BriefcaseTable = await Model.BriefcaseModel.LoadAsync();
             SelectedBriefcase = BriefcaseTable.Rows[0].Table.AsDataView()[0];
 
-            //ComponentGroupTable = await Model.ComponentGroupModel.LoadAsync();
             ComponentGroupTable = Model.ComponentGroupModel.Load();
             SelectedComponentGroup = ComponentGroupTable.Rows[0].Table.AsDataView()[0];
 
