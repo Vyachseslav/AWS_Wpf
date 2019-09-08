@@ -48,12 +48,12 @@ namespace AWS_Wpf_Project.Model
             this.CreateDateTime = createDT;
         }
 
-        public static DataTable Load()
+        public DataTable Load()
         {
             return new MainSqlMethod().LoadData("exec ShowBriefcases");
         }
 
-        public static async Task<DataTable> LoadAsync()
+        public async Task<DataTable> LoadAsync()
         {
             return await Task.Run(() => Load());
         }

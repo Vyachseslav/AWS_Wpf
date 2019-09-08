@@ -26,23 +26,24 @@
                     <MenuItem Header="PDF" />
                     <MenuItem Header="Excel" />
                 </MenuItem>
+                <MenuItem Header="Импорт" />
                 <Separator />
                 <MenuItem Header="Выход" />
             </MenuItem>
             <MenuItem Header="Правка" >
-                <MenuItem Header="Обновить" />
+                <MenuItem Header="Обновить" Command="{Binding RefreshCommand}"/>
                 <Separator />
                 <MenuItem Header="Создать" />
                 <MenuItem Header="Изменить" />
                 <MenuItem Header="Удалить" />
             </MenuItem>
-            <MenuItem Header="Настройки" >
+            <!--<MenuItem Header="Настройки" >
                 <MenuItem Header="Справочники" />
                 <MenuItem Header="Константы" />
                 <Separator />
                 <MenuItem Header="Настройка соединения" />
                 <MenuItem Header="Язык" />
-            </MenuItem>
+            </MenuItem>-->
             <MenuItem Header="Помощь" >
                 <MenuItem Header="Справка" />
                 <MenuItem Header="Сообщить об ошибке" />
@@ -74,7 +75,8 @@
                             <Image Source="pack://application:,,,/AWS_Wpf_Project;component/Resources/Minus_16.png" />
                         </Button.Content>
                     </Button>
-                    <Button x:Name="btnRefresh" Style="{DynamicResource ButtonNavigatorStyle}">
+                    <Button x:Name="btnRefresh" Style="{DynamicResource ButtonNavigatorStyle}"
+                            Command="{Binding RefreshCommand}">
                         <Button.Content>
                             <Image Source="pack://application:,,,/AWS_Wpf_Project;component/Resources/Reset_16.png" />
                         </Button.Content>
@@ -84,6 +86,9 @@
                 <localUC:SearchControl Grid.Column="1" Height="25" Width="250" HorizontalAlignment="Right"
                                        Margin="0,0,20,0"
                                ControlText="{Binding Path=SearchText, Mode=TwoWay}"/>
+                <!--<TextBox Grid.Column="1" Height="25" Width="250" HorizontalAlignment="Right"
+                                       Margin="0,0,20,0"
+                               Text="{Binding Path=SearchText, Delay=500, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>-->
             </Grid>
         </Border>
 

@@ -12,6 +12,13 @@ namespace AWS_Wpf_Project.ViewModel
 {
     public class HandbookViewModel : ViewModelBase
     {
+        private Model.FittingModel FittingModel { get; set; }
+        private Model.BriefcaseModel BriefcaseModel { get; set; }
+        private Model.ComponentGroupModel ComponentGroupModel { get; set; }
+        private Model.EquipmentModel EquipmentModel { get; set; }
+
+
+        private int _selectedTabIndex = 0;
         private IModable _selectedModel;
         private DataTable _selectedDataTable;
 
@@ -26,6 +33,8 @@ namespace AWS_Wpf_Project.ViewModel
         private DataRowView _selectedEquipment;
 
         private int _rowCount;
+
+        private RelayCommand _refreshCommand;
         
 
         public int RowCount
@@ -128,7 +137,24 @@ namespace AWS_Wpf_Project.ViewModel
                 string filterString = String.Empty;
                 if (!String.IsNullOrEmpty(_searchText))
                 {
-                    filterString = "[Name] like '%" + _searchText + "%' OR [ComponentGroup] like '%" + _searchText + "%'";
+                    switch(_selectedTabIndex)
+                    {
+                        case 0:
+                            filterString = $"[Name] like '%{_searchText}%' OR [ComponentGroup] like '%{_searchText}%'";
+                            break;
+                        case 1:
+                            filterString = $"[Name] like '%{_searchText}%' OR [Description] like '%{_searchText}%'";
+                            break;
+                        case 2:
+                            filterString = $"[Name] like '%{_searchText}%'";
+                            break;
+                        case 3:
+                            filterString = $"[Name] like '%{_searchText}%' OR [Description] like '%{_searchText}%'";
+                            break;
+                        default:
+                            filterString = "[Name] like '%" + _searchText + "%' OR [ComponentGroup] like '%" + _searchText + "%'";
+                            break;
+                    }                    
                 }
                 else
                 {
@@ -161,26 +187,27 @@ namespace AWS_Wpf_Project.ViewModel
                   (_activateTab = new RelayCommand(obj =>
                   {
                       int index = (int)obj;
+                      _selectedTabIndex = index;
                       switch(index)
                       {
                           case 0:
-                              _selectedModel = new Model.FittingModel();
+                              _selectedModel = FittingModel;
                               _selectedDataTable = FittingTable;
                               break;
                           case 1:
-                              _selectedModel = new Model.BriefcaseModel();
+                              _selectedModel = BriefcaseModel;
                               _selectedDataTable = BriefcaseTable;
                               break;
                           case 2:
-                              _selectedModel = new Model.ComponentGroupModel();
+                              _selectedModel = ComponentGroupModel;
                               _selectedDataTable = ComponentGroupTable;
                               break;
                           case 3:
-                              _selectedModel = new Model.EquipmentModel();
+                              _selectedModel = EquipmentModel;
                               _selectedDataTable = EquipmentTable;
                               break;
                           default:
-                              _selectedModel = new Model.FittingModel();
+                              _selectedModel = FittingModel;
                               _selectedDataTable = FittingTable;
                               break;
                       }
@@ -193,6 +220,11 @@ namespace AWS_Wpf_Project.ViewModel
 
         public HandbookViewModel()
         {
+            FittingModel = new Model.FittingModel();
+            BriefcaseModel = new Model.BriefcaseModel();
+            ComponentGroupModel = new Model.ComponentGroupModel();
+            EquipmentModel = new Model.EquipmentModel();
+
             _ = Load();
 
             _selectedModel = new Model.FittingModel();            
@@ -200,19 +232,36 @@ namespace AWS_Wpf_Project.ViewModel
 
         private async Task Load()
         {
-            FittingTable = await Model.FittingModel.LoadAsync();
+            FittingTable = await FittingModel.LoadAsync();
             SelectedFitting = FittingTable.Rows[0].Table.AsDataView()[0];
             RowCount = FittingTable.Rows.Count;
             _selectedDataTable = FittingTable;
 
-            BriefcaseTable = await Model.BriefcaseModel.LoadAsync();
+            BriefcaseTable = await BriefcaseModel.LoadAsync();
             SelectedBriefcase = BriefcaseTable.Rows[0].Table.AsDataView()[0];
 
-            ComponentGroupTable = Model.ComponentGroupModel.Load();
+            ComponentGroupTable = await ComponentGroupModel.LoadAsync();
             SelectedComponentGroup = ComponentGroupTable.Rows[0].Table.AsDataView()[0];
 
-            EquipmentTable = await Model.EquipmentModel.LoadAsync();
+            EquipmentTable = await EquipmentModel.LoadAsync();
             SelectedEquipment = EquipmentTable.Rows[0].Table.AsDataView()[0];
+        }
+
+        private async void Refresh()
+        {
+            _selectedDataTable = await Task.Run(() => _selectedModel.LoadAsync());
+        }
+
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                return _refreshCommand ??
+                  (_refreshCommand = new RelayCommand(obj =>
+                  {
+                      Refresh();
+                  }));
+            }
         }
     }
 }

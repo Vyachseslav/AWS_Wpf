@@ -5,5 +5,12 @@
         <Setter Property="RowHeight" Value="20" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontFamily" Value="Times New Roman" />
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="True" />
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
+        <Setter Property="VirtualizingPanel.CacheLength" Value="30" />
+        <Setter Property="VirtualizingPanel.CacheLengthUnit" Value="Item" />
     </Style>
 </ResourceDictionary>

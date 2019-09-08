@@ -30,12 +30,12 @@ namespace AWS_Wpf_Project.Model
             this.Name = name;
         }
 
-        public static DataTable Load()
+        public DataTable Load()
         {
             return new MainSqlMethod().LoadData("exec ShowComponentGroups");
         }
 
-        public static async Task<DataTable> LoadAsync()
+        public async Task<DataTable> LoadAsync()
         {
             return await Task.Run(() => Load());
         }

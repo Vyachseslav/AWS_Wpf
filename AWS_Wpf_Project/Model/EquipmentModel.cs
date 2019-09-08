@@ -46,12 +46,12 @@ namespace AWS_Wpf_Project.Model
             this.Description = description;
         }
 
-        public static DataTable Load()
+        public DataTable Load()
         {
             return new MainSqlMethod().LoadData("exec ShowEquipments");
         }
 
-        public static async Task<DataTable> LoadAsync()
+        public async Task<DataTable> LoadAsync()
         {
             return await Task.Run(() => Load());
         }
