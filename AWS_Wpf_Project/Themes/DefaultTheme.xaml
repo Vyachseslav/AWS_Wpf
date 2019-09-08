@@ -4,5 +4,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/Menu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/DataGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/StatusBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/Label.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/TabControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

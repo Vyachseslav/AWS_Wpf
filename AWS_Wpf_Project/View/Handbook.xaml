@@ -12,7 +12,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="40" />
             <RowDefinition />
             <RowDefinition Height="25" />
@@ -49,7 +49,7 @@
             </MenuItem>
         </Menu>
 
-        <TabControl Grid.Row="2" BorderThickness="1" BorderBrush="Gray">
+        <TabControl Grid.Row="2">
             <TabItem Header="Комплектующие">
                 <DataGrid x:Name="gridFittings" 
                           ItemsSource="{Binding FittingTable, UpdateSourceTrigger=PropertyChanged}"
@@ -101,6 +101,12 @@
                 </DataGrid>
             </TabItem>
         </TabControl>
+
+        <StatusBar Grid.Row="3">
+            <Label x:Name="lblCountItems" 
+                   Style="{DynamicResource StatusBarLabelStyle}"
+                   Content="{Binding RowCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </StatusBar>
         
     </Grid>
 </Window>

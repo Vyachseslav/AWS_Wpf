@@ -19,6 +19,19 @@ namespace AWS_Wpf_Project.ViewModel
         private DataRowView _selectedcomponentGroup;
         private DataRowView _selectedEquipment;
 
+        private int _rowCount;
+        
+
+        public int RowCount
+        {
+            get { return _rowCount; }
+            set
+            {
+                _rowCount = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DataTable FittingTable
         {
             get { return _fittingTable; }
