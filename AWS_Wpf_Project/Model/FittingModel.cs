@@ -1,10 +1,11 @@
-﻿using AWS_Wpf_Project.Sql;
+﻿using AWS_Wpf_Project.Interface;
+using AWS_Wpf_Project.Sql;
 using System.Data;
 using System.Threading.Tasks;
 
 namespace AWS_Wpf_Project.Model
 {
-    public class FittingModel : ViewModelBase
+    public class FittingModel : ViewModelBase, IModable
     {
         private int _id;
         private string _name;

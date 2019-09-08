@@ -7,5 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/StatusBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/Label.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AWS_Wpf_Project;component/Style/Border.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

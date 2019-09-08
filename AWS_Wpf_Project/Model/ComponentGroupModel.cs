@@ -1,10 +1,11 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
+using AWS_Wpf_Project.Interface;
 using AWS_Wpf_Project.Sql;
 
 namespace AWS_Wpf_Project.Model
 {
-    internal class ComponentGroupModel : ViewModelBase
+    internal class ComponentGroupModel : ViewModelBase, IModable
     {
         private int _id;
         private string _name;

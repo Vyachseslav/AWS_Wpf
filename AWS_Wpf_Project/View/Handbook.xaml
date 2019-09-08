@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AWS_Wpf_Project.View"
         xmlns:localVM="clr-namespace:AWS_Wpf_Project.ViewModel"
         xmlns:localUC="clr-namespace:AWS_Wpf_Project.UserControls"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Справочники" Height="450" Width="800">
     <Window.DataContext>
@@ -50,15 +51,35 @@
             </MenuItem>
         </Menu>
 
-        <!--<localUC:SearchControl Grid.Row="1" Height="25" Width="250" HorizontalAlignment="Left"
-                               ControlText="{Binding Path=SearchText, Mode=TwoWay}"/>-->
-        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1">
+        <Border Grid.Row="1" Style="{DynamicResource BorderPanelStyle}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                    <Button x:Name="btnAdd" Style="{DynamicResource ButtonNavigatorStyle}">
+                        <Button.Content>
+                            <Image Source="pack://application:,,,/AWS_Wpf_Project;component/Resources/Plus_16.png" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnEdit" Style="{DynamicResource ButtonNavigatorStyle}">
+                        <Button.Content>
+                            <Image Source="pack://application:,,,/AWS_Wpf_Project;component/Resources/Move-Up_16.png" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnRemove" Style="{DynamicResource ButtonNavigatorStyle}">
+                        <Button.Content>
+                            <Image Source="pack://application:,,,/AWS_Wpf_Project;component/Resources/Minus_16.png" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnRefresh" Style="{DynamicResource ButtonNavigatorStyle}">
+                        <Button.Content>
+                            <Image Source="pack://application:,,,/AWS_Wpf_Project;component/Resources/Reset_16.png" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
 
                 <localUC:SearchControl Grid.Column="1" Height="25" Width="250" HorizontalAlignment="Right"
                                        Margin="0,0,20,0"
@@ -66,8 +87,15 @@
             </Grid>
         </Border>
 
-        <TabControl Grid.Row="2">
-            <TabItem Header="Комплектующие">
+        <TabControl x:Name="tabControl" Grid.Row="2">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction
+                            Command="{Binding ActivateTabCommand}"
+                            CommandParameter="{Binding ElementName=tabControl, Path=SelectedIndex}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <TabItem Header="Комплектующие" TabIndex="0">
                 <DataGrid x:Name="gridFittings" 
                           ItemsSource="{Binding FittingTable, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding SelectedFitting, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -80,7 +108,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Портфели">
+            <TabItem Header="Портфели" TabIndex="1">
                 <DataGrid x:Name="gridBriefcase" 
                           ItemsSource="{Binding BriefcaseTable, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding SelectedBriefcase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -92,7 +120,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Группы комплектующих">
+            <TabItem Header="Группы комплектующих" TabIndex="2">
                 <DataGrid x:Name="gridComponentGroup" 
                           AutoGenerateColumns="False"
                           ItemsSource="{Binding Path=ComponentGroupTable, UpdateSourceTrigger=PropertyChanged}"
@@ -104,7 +132,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Оборудование">
+            <TabItem Header="Оборудование" TabIndex="3">
                 <DataGrid x:Name="gridEquipment" 
                           ItemsSource="{Binding EquipmentTable, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding SelectedEquipment, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"

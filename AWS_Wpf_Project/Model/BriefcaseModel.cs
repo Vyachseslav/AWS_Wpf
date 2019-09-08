@@ -1,11 +1,12 @@
-﻿using AWS_Wpf_Project.Sql;
+﻿using AWS_Wpf_Project.Interface;
+using AWS_Wpf_Project.Sql;
 using System;
 using System.Data;
 using System.Threading.Tasks;
 
 namespace AWS_Wpf_Project.Model
 {
-    internal class BriefcaseModel : ViewModelBase
+    internal class BriefcaseModel : ViewModelBase, IModable
     {
         private int _id;
         private string _name;

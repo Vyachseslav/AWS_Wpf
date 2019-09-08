@@ -1,15 +1,20 @@
-﻿using System;
+﻿using AWS_Wpf_Project.Interface;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AWS_Wpf_Project.ViewModel
 {
     public class HandbookViewModel : ViewModelBase
     {
+        private IModable _selectedModel;
+        private DataTable _selectedDataTable;
+
         private DataTable _fittingTable;
         private DataTable _briefcaseTable;
         private DataTable _componentGroupTable;
@@ -117,7 +122,21 @@ namespace AWS_Wpf_Project.ViewModel
         public string SearchText
         {
             get { return _searchText; }
-            set { _searchText = value; OnPropertyChanged(); }
+            set
+            {
+                _searchText = value;
+                string filterString = String.Empty;
+                if (!String.IsNullOrEmpty(_searchText))
+                {
+                    filterString = "[Name] like '%" + _searchText + "%' OR [ComponentGroup] like '%" + _searchText + "%'";
+                }
+                else
+                {
+                    filterString = String.Empty;
+                }
+                _selectedDataTable.DefaultView.RowFilter = filterString;
+                OnPropertyChanged();
+            }
         }
 
         private RelayCommand _openHandbooksCommand;
@@ -133,15 +152,58 @@ namespace AWS_Wpf_Project.ViewModel
             }
         }
 
+        private RelayCommand _activateTab;
+        public RelayCommand ActivateTabCommand
+        {
+            get
+            {
+                return _activateTab ??
+                  (_activateTab = new RelayCommand(obj =>
+                  {
+                      int index = (int)obj;
+                      switch(index)
+                      {
+                          case 0:
+                              _selectedModel = new Model.FittingModel();
+                              _selectedDataTable = FittingTable;
+                              break;
+                          case 1:
+                              _selectedModel = new Model.BriefcaseModel();
+                              _selectedDataTable = BriefcaseTable;
+                              break;
+                          case 2:
+                              _selectedModel = new Model.ComponentGroupModel();
+                              _selectedDataTable = ComponentGroupTable;
+                              break;
+                          case 3:
+                              _selectedModel = new Model.EquipmentModel();
+                              _selectedDataTable = EquipmentTable;
+                              break;
+                          default:
+                              _selectedModel = new Model.FittingModel();
+                              _selectedDataTable = FittingTable;
+                              break;
+                      }
+
+                      RowCount = _selectedDataTable.Rows.Count;
+                  }));
+            }
+        }
+
+
         public HandbookViewModel()
         {
             _ = Load();
+
+            _selectedModel = new Model.FittingModel();            
         }
 
         private async Task Load()
         {
             FittingTable = await Model.FittingModel.LoadAsync();
             SelectedFitting = FittingTable.Rows[0].Table.AsDataView()[0];
+            RowCount = FittingTable.Rows.Count;
+            _selectedDataTable = FittingTable;
 
             BriefcaseTable = await Model.BriefcaseModel.LoadAsync();
             SelectedBriefcase = BriefcaseTable.Rows[0].Table.AsDataView()[0];

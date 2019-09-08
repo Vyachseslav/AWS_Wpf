@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/editclear.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/minus_16.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/move-up_16.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/plus_16.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/reset_16.png")]
 
 
