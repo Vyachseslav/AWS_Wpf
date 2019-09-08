@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\SearchControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Handbook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +105,9 @@
     <Compile Include="Model\FittingModel.cs" />
     <Compile Include="Services\StandartMessageService.cs" />
     <Compile Include="Sql\MainSqlMethod.cs" />
+    <Compile Include="UserControls\SearchControl.xaml.cs">
+      <DependentUpon>SearchControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModel\HandbookViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -139,7 +146,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Editclear.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\MainIcon.ico" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AWS_Wpf_Project.ViewModel
 {
@@ -109,6 +110,26 @@ namespace AWS_Wpf_Project.ViewModel
             {
                 _selectedEquipment = value;
                 OnPropertyChanged("SelectedEquipment");
+            }
+        }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get { return _searchText; }
+            set { _searchText = value; OnPropertyChanged(); }
+        }
+
+        private RelayCommand _openHandbooksCommand;
+        public RelayCommand OpenHandbookCommand
+        {
+            get
+            {
+                return _openHandbooksCommand ??
+                  (_openHandbooksCommand = new RelayCommand(obj =>
+                  {
+                      MessageBox.Show(SearchText);
+                  }));
             }
         }
 

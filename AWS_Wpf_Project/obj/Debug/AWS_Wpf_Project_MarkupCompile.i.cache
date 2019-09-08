@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\App.xaml
-8-405013760
+9-2094327729
 
-19-314414637
+2028739634
 13-1142990016
-Style\DataGrid.xaml;Style\Label.xaml;Style\Menu.xaml;Style\StatusBar.xaml;Style\TabControl.xaml;Themes\DefaultTheme.xaml;View\Handbook.xaml;View\MainWindow.xaml;
+Style\DataGrid.xaml;Style\Label.xaml;Style\Menu.xaml;Style\StatusBar.xaml;Style\TabControl.xaml;Themes\DefaultTheme.xaml;UserControls\SearchControl.xaml;View\Handbook.xaml;View\MainWindow.xaml;
 
-True
+False
 

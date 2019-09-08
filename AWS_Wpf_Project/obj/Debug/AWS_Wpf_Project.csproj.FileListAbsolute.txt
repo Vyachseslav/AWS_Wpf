@@ -22,3 +22,6 @@ D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\Style\DataGrid.baml
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\Style\Label.baml
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\Style\StatusBar.baml
 D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\Style\TabControl.baml
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\UserControls\SearchControl.g.cs
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\UserControls\SearchControl.baml
+D:\For Alexandr\AWS_Wpf\AWS_Wpf_Project\obj\Debug\AWS_Wpf_Project.csprojAssemblyReference.cache
